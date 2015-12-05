@@ -24,6 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 using System.Collections;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Web;
 using System.Web.Services;
@@ -144,7 +145,7 @@ namespace PoorMansTSqlFormatterWebDemo
             // other site or app: they should just download the library and incorporate or host it directly.
             // (assuming the project is GPL-compatible)
             //
-            string allowedHost = System.Configuration.ConfigurationSettings.AppSettings["ReferrerHostValidation"];
+            string allowedHost = ConfigurationManager.AppSettings["ReferrerHostValidation"];
             //no error handling, just do the bare (safe) minimum.
             if (string.IsNullOrEmpty(allowedHost)
                 || (Context.Request.UrlReferrer != null

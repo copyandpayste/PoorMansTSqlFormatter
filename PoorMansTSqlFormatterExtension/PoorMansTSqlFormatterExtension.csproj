@@ -57,12 +57,13 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
-      <DependentUpon>Settings.settings</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs" />
+    <Compile Include="TSqlFormatCommand.cs" />
     <Compile Include="TSqlSettingsCommand.cs" />
     <Compile Include="TSqlSettingsCommandPackage.cs" />
   </ItemGroup>
@@ -70,7 +71,6 @@
     <None Include="app.config" />
     <None Include="Key.snk" />
     <None Include="packages.config" />
-    <None Include="PreBuild_Replace.bat" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -81,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
+    <Content Include="Resources\TSqlFormatCommand.png" />
     <Content Include="Resources\TSqlSettingsCommand.png" />
     <Content Include="Resources\TSqlSettingsCommandPackage.ico" />
     <Content Include="stylesheet.css" />
@@ -228,7 +229,8 @@
   </Target>
   <Import Project="..\packages\Microsoft.VSSDK.BuildTools.14.1.24720\build\Microsoft.VSSDK.BuildTools.targets" Condition="Exists('..\packages\Microsoft.VSSDK.BuildTools.14.1.24720\build\Microsoft.VSSDK.BuildTools.targets')" />
   <PropertyGroup>
-    <PreBuildEvent>Call $(ProjectDir)\PreBuild_Replace.bat $(SolutionDir) $(ProjectDir)</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -68,6 +68,7 @@ namespace PoorMansTSqlFormatterExtension
         {
             TSqlSettingsCommand.Initialize(this);
             base.Initialize();
+            TSqlFormatCommand.Initialize(this);
         }
 
         #endregion

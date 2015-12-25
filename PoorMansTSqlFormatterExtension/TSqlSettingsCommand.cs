@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using System.Reflection;
 using EnvDTE;
 using System.Resources;
+using EnvDTE80;
 
 namespace PoorMansTSqlFormatterExtension
 {
@@ -22,8 +23,6 @@ namespace PoorMansTSqlFormatterExtension
     /// </summary>
     internal sealed class TSqlSettingsCommand
     {
-        private Command _formatCommand;
-
         private ResourceManager _generalResourceManager = new ResourceManager("PoorMansTSqlFormatterExtension.GeneralLanguageContent", Assembly.GetExecutingAssembly());
         private PoorMansTSqlFormatterLib.SqlFormattingManager _formattingManager = null;
         DTE _applicationObject = Package.GetGlobalService(typeof(DTE)) as DTE;
@@ -105,15 +104,56 @@ namespace PoorMansTSqlFormatterExtension
         /// <param name="e">Event args.</param>
         private void MenuItemCallback(object sender, EventArgs e)
         {
-            //GetFormatHotkey();
+            //TODO: pass the current settings to this form
+            GetFormatHotkey();
             SettingsForm settings = new SettingsForm(Properties.Settings.Default, Assembly.GetExecutingAssembly(), _generalResourceManager.GetString("ProjectAboutDescription"), new SettingsForm.GetTextEditorKeyBindingScopeName(GetTextEditorKeyBindingScopeName));
             if (settings.ShowDialog() == DialogResult.OK)
             {
-                //SetFormatHotkey();
+                //TODO: change this to use the current settings
+                SetFormatHotkey();
                 _formattingManager = Utils.GetFormattingManager(Properties.Settings.Default);
             }
             settings.Dispose();
         }
+
+        private void GetFormatHotkey()
+        {
+            try
+            {
+                Command formatCommand = _applicationObject.Commands.Item("Tools.FormatTSql");
+                string flatBindingsValue = "";
+                var bindingArray = formatCommand.Bindings as object[];
+                if (bindingArray != null && bindingArray.Length > 0)
+                    flatBindingsValue = bindingArray[0].ToString();
+
+                if (Properties.Settings.Default.Hotkey != flatBindingsValue)
+                {
+                    Properties.Settings.Default.Hotkey = flatBindingsValue;
+                    Properties.Settings.Default.Save();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(string.Format(_generalResourceManager.GetString("HotkeyRetrievalFailureMessage"), Environment.NewLine, e.ToString()));
+            }
+        }
+
+        private void SetFormatHotkey()
+        {
+            try
+            {
+                Command formatCommand = _applicationObject.Commands.Item("Tools.FormatTSql");
+                if (Properties.Settings.Default.Hotkey == null || Properties.Settings.Default.Hotkey.Trim() == "")
+                    formatCommand.Bindings = new object[0];
+                else
+                    formatCommand.Bindings = Properties.Settings.Default.Hotkey;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(string.Format(_generalResourceManager.GetString("HotkeyBindingFailureMessage"), Environment.NewLine, e.ToString()));
+            }
+        }
+
         private string GetTextEditorKeyBindingScopeName()
         {
             string strScope = null;
@@ -134,139 +174,5 @@ namespace PoorMansTSqlFormatterExtension
             }
             return strScope;
         }
-
-
-        /// <summary>Implements the Exec method of the IDTCommandTarget interface. This is called when the command is invoked.</summary>
-        /// <param term='commandName'>The name of the command to execute.</param>
-        /// <param term='executeOption'>Describes how the command should be run.</param>
-        /// <param term='varIn'>Parameters passed from the caller to the command handler.</param>
-        /// <param term='varOut'>Parameters passed from the command handler to the caller.</param>
-        /// <param term='handled'>Informs the caller if the command was handled or not.</param>
-        /// <seealso class='Exec' />
-        public void Exec(string commandName, vsCommandExecOption executeOption, ref object varIn, ref object varOut, ref bool handled)
-        {
-            handled = false;
-            if (executeOption == vsCommandExecOption.vsCommandExecOptionDoDefault)
-            {
-                if (commandName.Equals("PoorMansTSqlFormatterExtension.AddinConnector.FormatSelectionOrActiveWindow"))
-                {
-                    string fileExtension = System.IO.Path.GetExtension(_applicationObject.ActiveDocument.FullName);
-                    bool isSqlFile = fileExtension.ToUpper().Equals(".SQL");
-
-                    if (isSqlFile ||
-                        MessageBox.Show(_generalResourceManager.GetString("FileTypeWarningMessage"), _generalResourceManager.GetString("FileTypeWarningMessageTitle"), MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        string fullText = SelectAllCodeFromDocument(_applicationObject.ActiveDocument);
-                        TextSelection selection = (TextSelection)_applicationObject.ActiveDocument.Selection;
-                        if (!selection.IsActiveEndGreater)
-                            selection.SwapAnchor();
-                        if (selection.Text.EndsWith(Environment.NewLine) || selection.Text.EndsWith(" "))
-                            selection.CharLeft(true, 1); //newline counts as a distance of one.
-                        string selectionText = selection.Text;
-                        bool formatSelectionOnly = selectionText.Length > 0 && selectionText.Length != fullText.Length;
-                        int cursorPoint = selection.ActivePoint.AbsoluteCharOffset;
-
-                        string textToFormat = formatSelectionOnly ? selectionText : fullText;
-                        bool errorsFound = false;
-                        string formattedText = _formattingManager.Format(textToFormat, ref errorsFound);
-
-                        bool abortFormatting = false;
-                        if (errorsFound)
-                            abortFormatting = MessageBox.Show(_generalResourceManager.GetString("ParseErrorWarningMessage"), _generalResourceManager.GetString("ParseErrorWarningMessageTitle"), MessageBoxButtons.YesNo) != DialogResult.Yes;
-
-                        if (!abortFormatting)
-                        {
-                            if (formatSelectionOnly)
-                            {
-                                //if selection just delete/insert, so the active point is at the end of the selection
-                                selection.Delete(1);
-                                selection.Insert(formattedText, (int)EnvDTE.vsInsertFlags.vsInsertFlagsContainNewText);
-                            }
-                            else
-                            {
-                                //if whole doc then replace all text, and put the cursor approximately where it was (using proportion of text total length before and after)
-                                int newPosition = (int)Math.Round(1.0 * cursorPoint * formattedText.Length / textToFormat.Length, 0, MidpointRounding.AwayFromZero);
-                                ReplaceAllCodeInDocument(_applicationObject.ActiveDocument, formattedText);
-                                ((TextSelection)(_applicationObject.ActiveDocument.Selection)).MoveToAbsoluteOffset(newPosition, false);
-                            }
-                        }
-                    }
-
-                    handled = true;
-                    return;
-                }
-                if (commandName.Equals("PoorMansTSqlFormatterExtension.AddinConnector.FormattingOptions"))
-                {
-                    GetFormatHotkey();
-                    SettingsForm settings = new SettingsForm(Properties.Settings.Default, Assembly.GetExecutingAssembly(), _generalResourceManager.GetString("ProjectAboutDescription"), new SettingsForm.GetTextEditorKeyBindingScopeName(GetTextEditorKeyBindingScopeName));
-                    if (settings.ShowDialog() == DialogResult.OK)
-                    {
-                        SetFormatHotkey();
-                        _formattingManager = Utils.GetFormattingManager(Properties.Settings.Default);
-                    }
-                    settings.Dispose();
-                }
-            }
-        }
-
-        private void GetFormatHotkey()
-        {
-            try
-            {
-                //TODO: Add support for multiple keybindings.
-                string flatBindingsValue = "";
-                var bindingArray = _formatCommand.Bindings as object[];
-                if (bindingArray != null && bindingArray.Length > 0)
-                    flatBindingsValue = bindingArray[0].ToString();
-
-                if (Properties.Settings.Default.Hotkey != flatBindingsValue)
-                {
-                    Properties.Settings.Default.Hotkey = flatBindingsValue;
-                    Properties.Settings.Default.Save();
-                }
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(string.Format(_generalResourceManager.GetString("HotkeyRetrievalFailureMessage"), Environment.NewLine, e.ToString()));
-            }
-        }
-
-        private void SetFormatHotkey()
-        {
-            try
-            {
-                //TODO: Add support for multiple keybindings.
-                if (Properties.Settings.Default.Hotkey == null || Properties.Settings.Default.Hotkey.Trim() == "")
-                    _formatCommand.Bindings = new object[0];
-                else
-                    _formatCommand.Bindings = Properties.Settings.Default.Hotkey;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(string.Format(_generalResourceManager.GetString("HotkeyBindingFailureMessage"), Environment.NewLine, e.ToString()));
-            }
-        }
-
-        //Nice clean methods avoiding slow selection-editing, from online post at:
-        //  http://www.visualstudiodev.com/visual-studio-extensibility/how-can-i-edit-documents-programatically-22319.shtml
-        private static string SelectAllCodeFromDocument(Document targetDoc)
-        {
-            string outText = "";
-            TextDocument textDoc = targetDoc.Object("TextDocument") as TextDocument;
-            if (textDoc != null)
-                outText = textDoc.StartPoint.CreateEditPoint().GetText(textDoc.EndPoint);
-            return outText;
-        }
-
-        private static void ReplaceAllCodeInDocument(Document targetDoc, string newText)
-        {
-            TextDocument textDoc = targetDoc.Object("TextDocument") as TextDocument;
-            if (textDoc != null)
-            {
-                textDoc.StartPoint.CreateEditPoint().Delete(textDoc.EndPoint);
-                textDoc.StartPoint.CreateEditPoint().Insert(newText);
-            }
-        }
-
     }
 }

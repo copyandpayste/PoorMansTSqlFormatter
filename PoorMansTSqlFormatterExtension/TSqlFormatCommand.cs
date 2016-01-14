@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using System.Reflection;
 using EnvDTE;
 using System.Resources;
+using PoorMansTSqlFormatterLib.Formatters;
 
 namespace PoorMansTSqlFormatterExtension
 {
@@ -22,9 +23,9 @@ namespace PoorMansTSqlFormatterExtension
     /// </summary>
     internal sealed class TSqlFormatCommand
     {
-        private ResourceManager _generalResourceManager = new ResourceManager("PoorMansTSqlFormatterExtension.GeneralLanguageContent", Assembly.GetExecutingAssembly());
-        private PoorMansTSqlFormatterLib.SqlFormattingManager _formattingManager = null;
-        DTE _applicationObject = Package.GetGlobalService(typeof(DTE)) as DTE;
+        public static DTE applicationObject = Package.GetGlobalService(typeof(DTE)) as DTE;
+        public static Events events = applicationObject.Events;
+        public static DocumentEvents documentEvents = applicationObject.Events.get_DocumentEvents(null);
 
         /// <summary>
         /// Command ID.
@@ -84,6 +85,8 @@ namespace PoorMansTSqlFormatterExtension
             }
         }
 
+        private static bool SavingDocument = false;
+
         /// <summary>
         /// Initializes the singleton instance of the command.
         /// </summary>
@@ -91,6 +94,7 @@ namespace PoorMansTSqlFormatterExtension
         public static void Initialize(Package package)
         {
             Instance = new TSqlFormatCommand(package);
+            documentEvents.DocumentSaved += new _dispDocumentEvents_DocumentSavedEventHandler(DocumentEvents_DocumentSaved);
         }
 
         /// <summary>
@@ -102,52 +106,58 @@ namespace PoorMansTSqlFormatterExtension
         /// <param name="e">Event args.</param>
         private void MenuItemCallback(object sender, EventArgs e)
         {
-            if (_applicationObject.ActiveDocument != null)
+            if (applicationObject.ActiveDocument != null)
             {
-                //TODO: change this to get current settings
-                _formattingManager = Utils.GetFormattingManager(Properties.Settings.Default);
-                string fileExtension = System.IO.Path.GetExtension(_applicationObject.ActiveDocument.FullName);
-                bool isSqlFile = fileExtension.ToUpper().Equals(".SQL");
+                FormatDocument(applicationObject.ActiveDocument);
+            }
+        }
 
-                if (isSqlFile ||
-                    MessageBox.Show(_generalResourceManager.GetString("FileTypeWarningMessage"), _generalResourceManager.GetString("FileTypeWarningMessageTitle"), MessageBoxButtons.YesNo) == DialogResult.Yes)
+        public static void FormatDocument(Document document) {
+            PoorMansTSqlFormatterLib.SqlFormattingManager formattingManager = Utils.GetFormattingManager(Properties.Settings.Default);
+            ResourceManager generalResourceManager = new ResourceManager("PoorMansTSqlFormatterExtension.GeneralLanguageContent", Assembly.GetExecutingAssembly());
+
+        string fileExtension = System.IO.Path.GetExtension(document.FullName);
+            bool isSqlFile = fileExtension.ToUpper().Equals(".SQL");
+
+            if (isSqlFile ||
+                MessageBox.Show(generalResourceManager.GetString("FileTypeWarningMessage"), generalResourceManager.GetString("FileTypeWarningMessageTitle"), MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                string fullText = SelectAllCodeFromDocument(document);
+                TextSelection selection = (TextSelection)document.Selection;
+                if (!selection.IsActiveEndGreater)
+                    selection.SwapAnchor();
+                if (selection.Text.EndsWith(Environment.NewLine) || selection.Text.EndsWith(" "))
+                    selection.CharLeft(true, 1); //newline counts as a distance of one.
+                string selectionText = selection.Text;
+                bool formatSelectionOnly = selectionText.Length > 0 && selectionText.Length != fullText.Length;
+                int cursorPoint = selection.ActivePoint.AbsoluteCharOffset;
+
+                string textToFormat = formatSelectionOnly ? selectionText : fullText;
+                bool errorsFound = false;
+                string formattedText = formattingManager.Format(textToFormat, ref errorsFound);
+
+                bool abortFormatting = false;
+                if (errorsFound)
+                    abortFormatting = MessageBox.Show(generalResourceManager.GetString("ParseErrorWarningMessage"), generalResourceManager.GetString("ParseErrorWarningMessageTitle"), MessageBoxButtons.YesNo) != DialogResult.Yes;
+
+                if (!abortFormatting)
                 {
-                    string fullText = SelectAllCodeFromDocument(_applicationObject.ActiveDocument);
-                    TextSelection selection = (TextSelection)_applicationObject.ActiveDocument.Selection;
-                    if (!selection.IsActiveEndGreater)
-                        selection.SwapAnchor();
-                    if (selection.Text.EndsWith(Environment.NewLine) || selection.Text.EndsWith(" "))
-                        selection.CharLeft(true, 1); //newline counts as a distance of one.
-                    string selectionText = selection.Text;
-                    bool formatSelectionOnly = selectionText.Length > 0 && selectionText.Length != fullText.Length;
-                    int cursorPoint = selection.ActivePoint.AbsoluteCharOffset;
-
-                    string textToFormat = formatSelectionOnly ? selectionText : fullText;
-                    bool errorsFound = false;
-                    string formattedText = _formattingManager.Format(textToFormat, ref errorsFound);
-
-                    bool abortFormatting = false;
-                    if (errorsFound)
-                        abortFormatting = MessageBox.Show(_generalResourceManager.GetString("ParseErrorWarningMessage"), _generalResourceManager.GetString("ParseErrorWarningMessageTitle"), MessageBoxButtons.YesNo) != DialogResult.Yes;
-
-                    if (!abortFormatting)
+                    if (formatSelectionOnly)
                     {
-                        if (formatSelectionOnly)
-                        {
-                            //if selection just delete/insert, so the active point is at the end of the selection
-                            selection.Delete(1);
-                            selection.Insert(formattedText, (int)EnvDTE.vsInsertFlags.vsInsertFlagsContainNewText);
-                        }
-                        else
-                        {
-                            //if whole doc then replace all text, and put the cursor approximately where it was (using proportion of text total length before and after)
-                            int newPosition = (int)Math.Round(1.0 * cursorPoint * formattedText.Length / textToFormat.Length, 0, MidpointRounding.AwayFromZero);
-                            ReplaceAllCodeInDocument(_applicationObject.ActiveDocument, formattedText);
-                            ((TextSelection)(_applicationObject.ActiveDocument.Selection)).MoveToAbsoluteOffset(newPosition, false);
-                        }
+                        //if selection just delete/insert, so the active point is at the end of the selection
+                        selection.Delete(1);
+                        selection.Insert(formattedText, (int)EnvDTE.vsInsertFlags.vsInsertFlagsContainNewText);
+                    }
+                    else
+                    {
+                        //if whole doc then replace all text, and put the cursor approximately where it was (using proportion of text total length before and after)
+                        int newPosition = (int)Math.Round(1.0 * cursorPoint * formattedText.Length / textToFormat.Length, 0, MidpointRounding.AwayFromZero);
+                        ReplaceAllCodeInDocument(document, formattedText);
+                        ((TextSelection)(document.Selection)).MoveToAbsoluteOffset(newPosition, false);
                     }
                 }
             }
+            
         }
 
         //Nice clean methods avoiding slow selection-editing, from online post at:
@@ -168,6 +178,25 @@ namespace PoorMansTSqlFormatterExtension
             {
                 textDoc.StartPoint.CreateEditPoint().Delete(textDoc.EndPoint);
                 textDoc.StartPoint.CreateEditPoint().Insert(newText);
+            }
+        }
+
+        public static void DocumentEvents_DocumentSaved(Document Document)
+        {
+            TSqlStandardFormatter formatter = (TSqlStandardFormatter)Utils.GetFormattingManager(Properties.Settings.Default).Formatter;
+            if (SavingDocument || !formatter.Options.FormatOnSave)
+                return;
+
+            string fileExtension = System.IO.Path.GetExtension(Document.FullName);
+            bool isSqlFile = fileExtension.ToUpper().Equals(".SQL");
+
+            if (isSqlFile)
+            {
+                FormatDocument(Document);
+
+                SavingDocument = true;
+                Document.Save(Document.FullName);
+                SavingDocument = false;
             }
         }
     }

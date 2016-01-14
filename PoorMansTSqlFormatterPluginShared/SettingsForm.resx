@@ -123,13 +123,10 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btn_Save.Location" type="System.Drawing.Point, System.Drawing">
-    <value>289, 368</value>
-  </data>
-  <data name="btn_Save.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>217, 312</value>
   </data>
   <data name="btn_Save.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 28</value>
+    <value>75, 23</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btn_Save.TabIndex" type="System.Int32, mscorlib">
@@ -154,13 +151,10 @@
     <value>Bottom, Right</value>
   </data>
   <data name="btn_Cancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>397, 368</value>
-  </data>
-  <data name="btn_Cancel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>298, 312</value>
   </data>
   <data name="btn_Cancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 28</value>
+    <value>75, 23</value>
   </data>
   <data name="btn_Cancel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -187,13 +181,10 @@
     <value>True</value>
   </data>
   <data name="chk_ExpandCommaLists.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 4</value>
-  </data>
-  <data name="chk_ExpandCommaLists.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>3, 3</value>
   </data>
   <data name="chk_ExpandCommaLists.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 21</value>
+    <value>124, 17</value>
   </data>
   <data name="chk_ExpandCommaLists.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -217,13 +208,10 @@
     <value>True</value>
   </data>
   <data name="chk_TrailingCommas.Location" type="System.Drawing.Point, System.Drawing">
-    <value>173, 4</value>
-  </data>
-  <data name="chk_TrailingCommas.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>133, 3</value>
   </data>
   <data name="chk_TrailingCommas.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 21</value>
+    <value>103, 17</value>
   </data>
   <data name="chk_TrailingCommas.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -247,13 +235,10 @@
     <value>True</value>
   </data>
   <data name="chk_ExpandBooleanExpressions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 33</value>
-  </data>
-  <data name="chk_ExpandBooleanExpressions.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>3, 26</value>
   </data>
   <data name="chk_ExpandBooleanExpressions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 21</value>
+    <value>163, 17</value>
   </data>
   <data name="chk_ExpandBooleanExpressions.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -277,13 +262,10 @@
     <value>True</value>
   </data>
   <data name="chk_ExpandCaseStatements.Location" type="System.Drawing.Point, System.Drawing">
-    <value>225, 33</value>
-  </data>
-  <data name="chk_ExpandCaseStatements.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>172, 26</value>
   </data>
   <data name="chk_ExpandCaseStatements.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 21</value>
+    <value>145, 17</value>
   </data>
   <data name="chk_ExpandCaseStatements.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -307,13 +289,10 @@
     <value>True</value>
   </data>
   <data name="chk_ExpandBetweenConditions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 62</value>
-  </data>
-  <data name="chk_ExpandBetweenConditions.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>3, 49</value>
   </data>
   <data name="chk_ExpandBetweenConditions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 21</value>
+    <value>159, 17</value>
   </data>
   <data name="chk_ExpandBetweenConditions.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -340,13 +319,10 @@
     <value>NoControl</value>
   </data>
   <data name="chk_ExpandInLists.Location" type="System.Drawing.Point, System.Drawing">
-    <value>217, 62</value>
-  </data>
-  <data name="chk_ExpandInLists.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>168, 49</value>
   </data>
   <data name="chk_ExpandInLists.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 21</value>
+    <value>100, 17</value>
   </data>
   <data name="chk_ExpandInLists.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -370,13 +346,10 @@
     <value>True</value>
   </data>
   <data name="chk_UppercaseKeywords.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 91</value>
-  </data>
-  <data name="chk_UppercaseKeywords.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>3, 72</value>
   </data>
   <data name="chk_UppercaseKeywords.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 21</value>
+    <value>127, 17</value>
   </data>
   <data name="chk_UppercaseKeywords.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -400,13 +373,10 @@
     <value>True</value>
   </data>
   <data name="chk_SpaceAfterExpandedComma.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 91</value>
-  </data>
-  <data name="chk_SpaceAfterExpandedComma.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>136, 72</value>
   </data>
   <data name="chk_SpaceAfterExpandedComma.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 21</value>
+    <value>170, 17</value>
   </data>
   <data name="chk_SpaceAfterExpandedComma.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -430,13 +400,10 @@
     <value>True</value>
   </data>
   <data name="chk_BreakJoinOnSections.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 120</value>
-  </data>
-  <data name="chk_BreakJoinOnSections.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>3, 95</value>
   </data>
   <data name="chk_BreakJoinOnSections.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 21</value>
+    <value>139, 17</value>
   </data>
   <data name="chk_BreakJoinOnSections.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -460,13 +427,10 @@
     <value>True</value>
   </data>
   <data name="chk_StandardizeKeywords.Location" type="System.Drawing.Point, System.Drawing">
-    <value>192, 120</value>
-  </data>
-  <data name="chk_StandardizeKeywords.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>148, 95</value>
   </data>
   <data name="chk_StandardizeKeywords.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 21</value>
+    <value>131, 17</value>
   </data>
   <data name="chk_StandardizeKeywords.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -486,14 +450,41 @@
   <data name="&gt;&gt;chk_StandardizeKeywords.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 205</value>
+  <data name="chk_FormatOnSave.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+  <data name="chk_FormatOnSave.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chk_FormatOnSave.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 118</value>
+  </data>
+  <data name="chk_FormatOnSave.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 17</value>
+  </data>
+  <data name="chk_FormatOnSave.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="chk_FormatOnSave.Text" xml:space="preserve">
+    <value>Format on Save</value>
+  </data>
+  <data name="&gt;&gt;chk_FormatOnSave.Name" xml:space="preserve">
+    <value>chk_FormatOnSave</value>
+  </data>
+  <data name="&gt;&gt;chk_FormatOnSave.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chk_FormatOnSave.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;chk_FormatOnSave.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 167</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>481, 155</value>
+    <value>361, 139</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -511,13 +502,10 @@
     <value>16</value>
   </data>
   <data name="txt_IndentString.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 15</value>
-  </data>
-  <data name="txt_IndentString.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>112, 12</value>
   </data>
   <data name="txt_IndentString.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 22</value>
+    <value>114, 20</value>
   </data>
   <data name="txt_IndentString.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -538,13 +526,10 @@
     <value>True</value>
   </data>
   <data name="lbl_IndentString.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 18</value>
-  </data>
-  <data name="lbl_IndentString.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>12, 15</value>
   </data>
   <data name="lbl_IndentString.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 17</value>
+    <value>70, 13</value>
   </data>
   <data name="lbl_IndentString.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -568,13 +553,10 @@
     <value>True</value>
   </data>
   <data name="lbl_IndentHint.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 18</value>
-  </data>
-  <data name="lbl_IndentHint.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>233, 15</value>
   </data>
   <data name="lbl_IndentHint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 17</value>
+    <value>155, 13</value>
   </data>
   <data name="lbl_IndentHint.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -595,13 +577,10 @@
     <value>13</value>
   </data>
   <data name="txt_Hotkey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 47</value>
-  </data>
-  <data name="txt_Hotkey.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>112, 38</value>
   </data>
   <data name="txt_Hotkey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 22</value>
+    <value>114, 20</value>
   </data>
   <data name="txt_Hotkey.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -622,13 +601,10 @@
     <value>True</value>
   </data>
   <data name="lbl_Hotkey.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 50</value>
-  </data>
-  <data name="lbl_Hotkey.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>12, 41</value>
   </data>
   <data name="lbl_Hotkey.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 17</value>
+    <value>78, 13</value>
   </data>
   <data name="lbl_Hotkey.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -655,13 +631,10 @@
     <value>5, 16</value>
   </data>
   <data name="lbl_HotkeyHint.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 50</value>
-  </data>
-  <data name="lbl_HotkeyHint.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>233, 41</value>
   </data>
   <data name="lbl_HotkeyHint.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 20</value>
+    <value>125, 17</value>
   </data>
   <data name="lbl_HotkeyHint.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -685,13 +658,10 @@
     <value>Bottom, Left</value>
   </data>
   <data name="btn_About.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 368</value>
-  </data>
-  <data name="btn_About.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>12, 312</value>
   </data>
   <data name="btn_About.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 28</value>
+    <value>75, 23</value>
   </data>
   <data name="btn_About.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -715,13 +685,10 @@
     <value>Bottom, Left</value>
   </data>
   <data name="btn_Reset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>124, 368</value>
-  </data>
-  <data name="btn_Reset.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>93, 312</value>
   </data>
   <data name="btn_Reset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 28</value>
+    <value>75, 23</value>
   </data>
   <data name="btn_Reset.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -742,13 +709,10 @@
     <value>9</value>
   </data>
   <data name="txt_SpacesPerTab.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 111</value>
-  </data>
-  <data name="txt_SpacesPerTab.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>112, 90</value>
   </data>
   <data name="txt_SpacesPerTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 22</value>
+    <value>114, 20</value>
   </data>
   <data name="txt_SpacesPerTab.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -766,13 +730,10 @@
     <value>8</value>
   </data>
   <data name="txt_MaxLineWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 79</value>
-  </data>
-  <data name="txt_MaxLineWidth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>112, 64</value>
   </data>
   <data name="txt_MaxLineWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 22</value>
+    <value>114, 20</value>
   </data>
   <data name="txt_MaxLineWidth.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -793,13 +754,10 @@
     <value>True</value>
   </data>
   <data name="lbl_SpacesPerTab.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 114</value>
-  </data>
-  <data name="lbl_SpacesPerTab.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>12, 93</value>
   </data>
   <data name="lbl_SpacesPerTab.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 17</value>
+    <value>87, 13</value>
   </data>
   <data name="lbl_SpacesPerTab.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -823,13 +781,10 @@
     <value>True</value>
   </data>
   <data name="lbl_SpacesPerTab_Extra.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 114</value>
-  </data>
-  <data name="lbl_SpacesPerTab_Extra.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>233, 93</value>
   </data>
   <data name="lbl_SpacesPerTab_Extra.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 17</value>
+    <value>115, 13</value>
   </data>
   <data name="lbl_SpacesPerTab_Extra.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -853,13 +808,10 @@
     <value>True</value>
   </data>
   <data name="lbl_MaxLineWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 82</value>
-  </data>
-  <data name="lbl_MaxLineWidth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>12, 67</value>
   </data>
   <data name="lbl_MaxLineWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 17</value>
+    <value>84, 13</value>
   </data>
   <data name="lbl_MaxLineWidth.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -880,13 +832,10 @@
     <value>0</value>
   </data>
   <data name="txt_StatementBreaks.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 141</value>
-  </data>
-  <data name="txt_StatementBreaks.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>112, 115</value>
   </data>
   <data name="txt_StatementBreaks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 22</value>
+    <value>114, 20</value>
   </data>
   <data name="txt_StatementBreaks.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -910,13 +859,10 @@
     <value>NoControl</value>
   </data>
   <data name="lbl_StatementBreaks.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 144</value>
-  </data>
-  <data name="lbl_StatementBreaks.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>12, 117</value>
   </data>
   <data name="lbl_StatementBreaks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 17</value>
+    <value>94, 13</value>
   </data>
   <data name="lbl_StatementBreaks.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -937,13 +883,10 @@
     <value>3</value>
   </data>
   <data name="txt_ClauseBreaks.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 171</value>
-  </data>
-  <data name="txt_ClauseBreaks.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>112, 139</value>
   </data>
   <data name="txt_ClauseBreaks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 22</value>
+    <value>114, 20</value>
   </data>
   <data name="txt_ClauseBreaks.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -967,13 +910,10 @@
     <value>NoControl</value>
   </data>
   <data name="lbl_ClauseBreaks.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 174</value>
-  </data>
-  <data name="lbl_ClauseBreaks.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+    <value>12, 141</value>
   </data>
   <data name="lbl_ClauseBreaks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 17</value>
+    <value>78, 13</value>
   </data>
   <data name="lbl_ClauseBreaks.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -997,16 +937,13 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
+    <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>513, 411</value>
-  </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
+    <value>385, 347</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>474, 243</value>
+    <value>360, 205</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Poor Man's T-Sql Formatter - Settings</value>

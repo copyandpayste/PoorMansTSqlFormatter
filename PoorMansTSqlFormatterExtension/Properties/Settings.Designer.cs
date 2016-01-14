@@ -202,5 +202,17 @@ namespace PoorMansTSqlFormatterExtension.Properties {
                 this["FirstInstallCompleted"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FormatOnSave {
+            get {
+                return ((bool)(this["FormatOnSave"]));
+            }
+            set {
+                this["FormatOnSave"] = value;
+            }
+        }
     }
 }

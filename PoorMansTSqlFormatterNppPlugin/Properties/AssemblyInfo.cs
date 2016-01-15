@@ -29,4 +29,4 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyCopyright("Copyright ©  2011-2013 Tao Klerks")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-[assembly: AssemblyVersion("1.5.1.*")]
+[assembly: AssemblyVersion("1.5.2.*")]

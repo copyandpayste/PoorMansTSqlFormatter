@@ -62,6 +62,7 @@ namespace PoorMansTSqlFormatterPluginShared
             this.chk_SpaceAfterExpandedComma = new System.Windows.Forms.CheckBox();
             this.chk_BreakJoinOnSections = new System.Windows.Forms.CheckBox();
             this.chk_StandardizeKeywords = new System.Windows.Forms.CheckBox();
+            this.chk_FormatOnSave = new System.Windows.Forms.CheckBox();
             this.txt_IndentString = new System.Windows.Forms.TextBox();
             this.lbl_IndentString = new System.Windows.Forms.Label();
             this.lbl_IndentHint = new System.Windows.Forms.Label();
@@ -79,7 +80,10 @@ namespace PoorMansTSqlFormatterPluginShared
             this.lbl_StatementBreaks = new System.Windows.Forms.Label();
             this.txt_ClauseBreaks = new System.Windows.Forms.TextBox();
             this.lbl_ClauseBreaks = new System.Windows.Forms.Label();
-            this.chk_FormatOnSave = new System.Windows.Forms.CheckBox();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -174,6 +178,12 @@ namespace PoorMansTSqlFormatterPluginShared
             this.chk_StandardizeKeywords.Name = "chk_StandardizeKeywords";
             this.chk_StandardizeKeywords.UseVisualStyleBackColor = true;
             // 
+            // chk_FormatOnSave
+            // 
+            resources.ApplyResources(this.chk_FormatOnSave, "chk_FormatOnSave");
+            this.chk_FormatOnSave.Name = "chk_FormatOnSave";
+            this.chk_FormatOnSave.UseVisualStyleBackColor = true;
+            // 
             // txt_IndentString
             // 
             resources.ApplyResources(this.txt_IndentString, "txt_IndentString");
@@ -266,11 +276,30 @@ namespace PoorMansTSqlFormatterPluginShared
             resources.ApplyResources(this.lbl_ClauseBreaks, "lbl_ClauseBreaks");
             this.lbl_ClauseBreaks.Name = "lbl_ClauseBreaks";
             // 
-            // chk_FormatOnSave
+            // btnImport
             // 
-            resources.ApplyResources(this.chk_FormatOnSave, "chk_FormatOnSave");
-            this.chk_FormatOnSave.Name = "chk_FormatOnSave";
-            this.chk_FormatOnSave.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.btnImport, "btnImport");
+            this.btnImport.Name = "btnImport";
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // btnExport
+            // 
+            resources.ApplyResources(this.btnExport, "btnExport");
+            this.btnExport.Name = "btnExport";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.DefaultExt = "xml";
+            resources.ApplyResources(this.openFileDialog, "openFileDialog");
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.DefaultExt = "xml";
+            this.saveFileDialog.FileName = "TSqlFormatterSettings.xml";
+            resources.ApplyResources(this.saveFileDialog, "saveFileDialog");
             // 
             // SettingsForm
             // 
@@ -278,6 +307,8 @@ namespace PoorMansTSqlFormatterPluginShared
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btn_Cancel;
+            this.Controls.Add(this.btnExport);
+            this.Controls.Add(this.btnImport);
             this.Controls.Add(this.lbl_MaxLineWidth);
             this.Controls.Add(this.lbl_SpacesPerTab_Extra);
             this.Controls.Add(this.lbl_ClauseBreaks);
@@ -340,5 +371,9 @@ namespace PoorMansTSqlFormatterPluginShared
 		private System.Windows.Forms.TextBox txt_ClauseBreaks;
 		private System.Windows.Forms.Label lbl_ClauseBreaks;
         private System.Windows.Forms.CheckBox chk_FormatOnSave;
+        private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }

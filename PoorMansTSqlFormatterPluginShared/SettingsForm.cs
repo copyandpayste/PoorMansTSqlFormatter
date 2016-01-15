@@ -30,6 +30,10 @@ using System.Text;
 using System.Windows.Forms;
 using System.Linq;
 using System.Reflection;
+using System.IO;
+using System.Xml.Serialization;
+using PoorMansTSqlFormatterLib.Formatters;
+using System.Xml;
 
 namespace PoorMansTSqlFormatterPluginShared
 {
@@ -77,6 +81,10 @@ namespace PoorMansTSqlFormatterPluginShared
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
+            SaveSettings();
+        }
+
+        private void SaveSettings() {
             try
             {
                 SetSettingsFromControlValues();
@@ -89,9 +97,12 @@ namespace PoorMansTSqlFormatterPluginShared
             }
         }
 
-        private void LoadControlValuesFromSettings()
+        private void LoadControlValuesFromSettings(TSqlStandardFormatterOptions options = null)
         {
-            PoorMansTSqlFormatterLib.Formatters.TSqlStandardFormatterOptions options = _settings.Options;
+            if (options == null)
+            {
+                options = _settings.Options;
+            }
 
             txt_IndentString.Text = options.IndentString.Replace("\t","\\t").Replace(" ","\\s");
             txt_MaxLineWidth.Text = options.MaxLineWidth.ToString();
@@ -115,7 +126,7 @@ namespace PoorMansTSqlFormatterPluginShared
 
         private void SetSettingsFromControlValues()
         {
-            _settings.Options = new PoorMansTSqlFormatterLib.Formatters.TSqlStandardFormatterOptions() {
+            _settings.Options = new TSqlStandardFormatterOptions() {
                 IndentString = txt_IndentString.Text,
                 MaxLineWidth = int.Parse(txt_MaxLineWidth.Text),
 				SpacesPerTab = int.Parse(txt_SpacesPerTab.Text),
@@ -173,6 +184,51 @@ namespace PoorMansTSqlFormatterPluginShared
             foreach (string prop in previousValues.Keys)
                 _settings[prop] = previousValues[prop];
             _settings.Save(); //because reset, irritatingly, saves.
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(TSqlStandardFormatterOptions));
+                    using (StringReader sr = new StringReader(File.ReadAllText(openFileDialog.FileName)))
+                    {
+                        using (XmlReader reader = XmlReader.Create(sr, new XmlReaderSettings { IgnoreWhitespace = false }))
+                        {
+                            TSqlStandardFormatterOptions options = (TSqlStandardFormatterOptions)(serializer.Deserialize(reader));
+                            LoadControlValuesFromSettings(options);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //TODO: change this to a resource
+                    MessageBox.Show("Failed to import settings" + Environment.NewLine + ex.Message);
+                }
+            }
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    SaveSettings();
+                    XmlSerializer serializer = new XmlSerializer(typeof(TSqlStandardFormatterOptions));
+                    FileStream file = File.Create(saveFileDialog.FileName);
+                    serializer.Serialize(file, _settings.Options);
+                    file.Close();
+                    file.Dispose();
+                }
+                catch (Exception ex)
+                {
+                    //TODO: change this to a resource
+                    MessageBox.Show("Failed to export settings" + Environment.NewLine + ex.Message);
+                }
+            }
         }
     }
 }

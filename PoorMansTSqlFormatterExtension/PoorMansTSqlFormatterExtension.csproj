@@ -7,6 +7,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <UseCodebase>true</UseCodebase>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
@@ -41,6 +42,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -49,6 +51,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GeneralLanguageContent.Designer.cs">
@@ -68,7 +71,9 @@
     <Compile Include="TSqlSettingsCommandPackage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Key.snk" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -208,10 +213,6 @@
     <ProjectReference Include="..\PoorMansTSqlFormatterLib\PoorMansTSqlFormatterLib.csproj">
       <Project>{adbdfdca-cab6-4569-9151-0bd42e65b400}</Project>
       <Name>PoorMansTSqlFormatterLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PoorMansTSqlFormatterNppPlugin\PoorMansTSqlFormatterNppPlugin.csproj">
-      <Project>{e56f6e12-089c-40ed-bcfd-923e5fa121a1}</Project>
-      <Name>PoorMansTSqlFormatterNppPlugin</Name>
     </ProjectReference>
     <ProjectReference Include="..\PoorMansTSqlFormatterPluginShared\PoorMansTSqlFormatterPluginShared.csproj">
       <Project>{4c350944-937b-4416-8442-3197fc7098f2}</Project>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PoorMansTSqlFormatterPluginShared {
+namespace PoorMansTSqlFormatterExtension {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace PoorMansTSqlFormatterPluginShared {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PoorMansTSqlFormatterPluginShared.GeneralLanguageContent", typeof(GeneralLanguageContent).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PoorMansTSqlFormatterExtension.GeneralLanguageContent", typeof(GeneralLanguageContent).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

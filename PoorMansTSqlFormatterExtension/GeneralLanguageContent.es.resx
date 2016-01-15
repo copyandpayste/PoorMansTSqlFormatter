@@ -117,14 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutTitleLabel" xml:space="preserve">
-    <value>Acerca de {0}</value>
+  <data name="FileTypeWarningMessage" xml:space="preserve">
+    <value>El documento activo no es un archivo ".sql" - está seguro de querer formatearlo?</value>
   </data>
-  <data name="ParseErrorWarningPrefix" xml:space="preserve">
-    <value>--ALERTA! SE ENCONTRARON ERRORES AL ANALIZAR EL CODIGO SQL!</value>
+  <data name="FileTypeWarningMessageTitle" xml:space="preserve">
+    <value>Archivo no SQL</value>
   </data>
-  <data name="SettingsSavingErrorMessage" xml:space="preserve">
-    <value>Error guardando configuración. Detalles:{0}{1}</value>
+  <data name="FormatButtonText" xml:space="preserve">
+    <value>Formatear Código T-SQL</value>
+  </data>
+  <data name="FormatButtonToolTip" xml:space="preserve">
+    <value>Formatea el código T-SQL seleccionado (o todo el código en la ventana activa, si no hay ninguno seleccionado)</value>
+  </data>
+  <data name="HotkeyRetrievalFailureMessage" xml:space="preserve">
+    <value>Error al recuperar el atajo de teclado del Formateador de T-SQL - por favor, revise el atajo seleccionado.{0}Detalles del error:{0}{1}</value>
+    <comment>{0} is a newline, {1} is the detailed exception</comment>
+  </data>
+  <data name="HotkeyBindingFailureMessage" xml:space="preserve">
+    <value>Error al procesar el atajo de teclado del Formateador de T-SQL - por favor, revise el atajo seleccionado.{0}Detalles del error:{0}{1}</value>
+    <comment>{0} is a newline, {1} is the detailed exception</comment>
+  </data>
+  <data name="OptionsButtonText" xml:space="preserve">
+    <value>Opciones de Formateado...</value>
+  </data>
+  <data name="OptionsButtonToolTip" xml:space="preserve">
+    <value>Le permite cambiar las opciones del formateador de SQL "Poor Man's T-SQL Formatter"</value>
+  </data>
+  <data name="ParseErrorWarningMessage" xml:space="preserve">
+    <value>Se encontraron errores al parsear el SQL. ¿Le gustaria formatear de todos modos?</value>
+  </data>
+  <data name="ParseErrorWarningMessageTitle" xml:space="preserve">
+    <value>Errores encontrados. ¿Continuar?</value>
+  </data>
+  <data name="ProjectAboutDescription" xml:space="preserve">
+    <value>Plug-in gratuito (AGPL) de Formateado de T-SQL, para SSMS y SSMS Express 2005-2012 y Visual Studio 2005-2010.</value>
+  </data>
+  <data name="TextEditorScopeNameRetrievalFailureMessage" xml:space="preserve">
+    <value>La detección del nombre del "Key Binding Scope" "Text Editor" ha fallado.{0}Detalles del error:{0}{1}</value>
     <comment>{0} is a newline, {1} is the detailed exception</comment>
   </data>
 </root>

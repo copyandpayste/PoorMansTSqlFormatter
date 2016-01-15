@@ -117,14 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutTitleLabel" xml:space="preserve">
-    <value>About {0}</value>
+  <data name="FileTypeWarningMessage" xml:space="preserve">
+    <value>The active document is not listed as a ".sql" file - are you sure you want to format?</value>
   </data>
-  <data name="ParseErrorWarningPrefix" xml:space="preserve">
-    <value>--WARNING! ERRORS ENCOUNTERED DURING SQL PARSING!</value>
+  <data name="FileTypeWarningMessageTitle" xml:space="preserve">
+    <value>Non-SQL File</value>
   </data>
-  <data name="SettingsSavingErrorMessage" xml:space="preserve">
-    <value>Error saving settings. Detail:{0}{1}</value>
+  <data name="FormatButtonText" xml:space="preserve">
+    <value>Format T-SQL Code</value>
+  </data>
+  <data name="FormatButtonToolTip" xml:space="preserve">
+    <value>Formats the selected T-SQL code (or all the code in the active window, if none selected)</value>
+  </data>
+  <data name="HotkeyRetrievalFailureMessage" xml:space="preserve">
+    <value>T-SQL Formatter hotkey retrieval failed - please revise hotkey setting.{0}Error Details:{0}{1}</value>
+    <comment>{0} is a newline, {1} is the detailed exception</comment>
+  </data>
+  <data name="HotkeyBindingFailureMessage" xml:space="preserve">
+    <value>T-SQL Formatter hotkey binding failed - please revise hotkey setting.{0}Error Details:{0}{1}</value>
+    <comment>{0} is a newline, {1} is the detailed exception</comment>
+  </data>
+  <data name="OptionsButtonText" xml:space="preserve">
+    <value>T-SQL Formatting Options...</value>
+  </data>
+  <data name="OptionsButtonToolTip" xml:space="preserve">
+    <value>Allows you to edit the Poor Man's T-SQL Formatter options</value>
+  </data>
+  <data name="ParseErrorWarningMessage" xml:space="preserve">
+    <value>Errors found during SQL parsing. Would you like to apply formatting anyway?</value>
+  </data>
+  <data name="ParseErrorWarningMessageTitle" xml:space="preserve">
+    <value>Errors found. Continue?</value>
+  </data>
+  <data name="ProjectAboutDescription" xml:space="preserve">
+    <value>A simple free (AGPL) T-SQL Formatting Addin for SSMS and SSMS Express 2005-2012 and Visual Studio 2005-2010.</value>
+  </data>
+  <data name="TextEditorScopeNameRetrievalFailureMessage" xml:space="preserve">
+    <value>Failed to retrieve localized Text Editor key binding scope name.{0}Error Details:{0}{1}</value>
     <comment>{0} is a newline, {1} is the detailed exception</comment>
   </data>
 </root>

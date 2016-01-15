@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="PoorMansTSqlFormatterExtension.Eric Mohan.0ddcce95-96f1-4805-991e-9c6ea0d63271" Version="1.0" Language="en-US" Publisher="Eric Mohan" />
+    <Identity Id="PoorMansTSqlFormatterExtension.Eric Mohan.0ddcce95-96f1-4805-991e-9c6ea0d63271" Version="1.0.1" Language="en-US" Publisher="Eric Mohan" />
     <DisplayName>PoorMansTSqlFormatterExtension</DisplayName>
-    <Description>Empty VSIX Project.</Description>
+    <Description xml:space="preserve">A simple free (AGPL) T-SQL formatting extension</Description>
   </Metadata>
   <Installation>
     <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[11.0,14.0]" />

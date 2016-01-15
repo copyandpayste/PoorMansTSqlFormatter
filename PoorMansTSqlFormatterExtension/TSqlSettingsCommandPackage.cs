@@ -36,6 +36,9 @@ namespace PoorMansTSqlFormatterExtension
     /// </para>
     /// </remarks>
     [PackageRegistration(UseManagedResourcesOnly = true)]
+    [ProvideAutoLoad(UIContextGuids80.SolutionExists)]
+    [ProvideAutoLoad(UIContextGuids80.NoSolution)]
+    [ProvideAutoLoad(UIContextGuids80.EmptySolution)]
     [InstalledProductRegistration("#110", "#112", "1.0", IconResourceID = 400)] // Info on this package for Help/About
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [Guid(TSqlSettingsCommandPackage.PackageGuidString)]
